@@ -1,9 +1,191 @@
+<!-- Document Type Declaration - Specifies HTML5 document -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Success!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBC Performance Tracking System</title>
+    <!-- Link to new modern CSS for landing page -->
+    <link rel="stylesheet" href="assets/landing_modern.css">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>🎉 It works! Your GitHub Pages is live.</h1>
+    <header class="modern-header">
+        <nav class="modern-navbar">
+            <div class="logo">CBC Tracker</div>
+            <div class="modern-nav-links">
+                <a href="#home" class="nav-item active" data-section="home">Home</a>
+                <a href="#about" class="nav-item" data-section="about">About Us</a>
+                <a href="#contacts" class="nav-item" data-section="contacts">Contacts</a>
+                <a href="#faqs" class="nav-item" data-section="faqs">FAQs</a>
+            </div>
+            <div class="modern-auth-buttons">
+                <a href="User registration.html" class="signup-btn">Sign Up</a>
+                <a href="login.html" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+    <main class="modern-main">
+        <div class="main-content-card slide-home" id="mainContentCard">
+            <!-- Home Section -->
+            <section id="home" class="main-section active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">CBC Performance Tracking System</h1>
+                        <p class="hero-tagline">Track student performance under Kenya's Competency-Based Curriculum</p>
+                        <div class="system-message">Empowering Kenya's Future, One Student at a Time.</div>
+                        <div class="system-description">
+                            CBC Performance Tracking System helps teachers, students, and schools unlock their full potential with real-time insights and seamless collaboration.
+                        </div>
+                        <div class="home-intro">
+                            <p>Welcome to the next generation of education management. CBC Tracker is designed to simplify performance tracking, foster collaboration, and empower every learner and educator in Kenya's CBC journey.</p>
+                        </div>
+                    </div>
+                </div>
+                <section class="why-choose-section">
+                    <h2 class="why-title">Why Choose Us?</h2>
+                    <div class="why-cards">
+                        <div class="why-card">
+                            <span class="why-icon">📈</span>
+                            <h3>Insightful Analytics</h3>
+                            <p>Get real-time, actionable insights into student progress and school performance.</p>
+                        </div>
+                        <div class="why-card">
+                            <span class="why-icon">🤝</span>
+                            <h3>Seamless Collaboration</h3>
+                            <p>Connect teachers, students, and administrators for a unified CBC experience.</p>
+                        </div>
+                        <div class="why-card">
+                            <span class="why-icon">🔒</span>
+                            <h3>Secure & Reliable</h3>
+                            <p>Your data is protected with best-in-class security and privacy standards.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- CBC Gallery comes first -->
+                <section class="gallery-section">
+                    <h2 class="section-title">CBC in Action</h2>
+                    <div class="cbc-gallery-grid">
+                        <div class="cbc-gallery-item">
+                            <img src="assets/cbc pik 1.jpeg" alt="Classroom Learning">
+                            <div class="gallery-caption">Interactive Classroom Learning</div>
+                        </div>
+                        <div class="cbc-gallery-item">
+                            <img src="assets/cbc pik 2.jpeg" alt="Practical Learning">
+                            <div class="gallery-caption">Hands-on Practical Sessions</div>
+                        </div>
+                        <div class="cbc-gallery-item">
+                            <img src="assets/cbc pik 3.jpeg" alt="Digital Learning">
+                            <div class="gallery-caption">Modern Digital Tools</div>
+                        </div>
+                        <div class="cbc-gallery-item">
+                            <img src="assets/cbc pik 4.jpeg" alt="Collaborative Learning">
+                            <div class="gallery-caption">Team-based Learning</div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Features Section -->
+                <section class="features-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-cards">
+                        <div class="feature-card">
+                            <img src="assets/Performance.png" alt="Analytics Icon">
+                            <h3>Performance Analytics</h3>
+                            <p>Track and analyze student progress with detailed metrics and insights</p>
+                        </div>
+                        <div class="feature-card">
+                            <img src="assets/grad cap.png" alt="CBC Icon">
+                            <h3>CBC Aligned</h3>
+                            <p>Fully aligned with Kenya's Competency-Based Curriculum standards</p>
+                        </div>
+                        <div class="feature-card">
+                            <img src="assets/collaboration.png" alt="Collaboration Icon">
+                            <h3>Collaboration</h3>
+                            <p>Easy collaboration between teachers, students, and administrators</p>
+                        </div>
+                        <div class="feature-card">
+                            <img src="assets/reports.png" alt="Reports Icon">
+                            <h3>Easy Report Generation</h3>
+                            <p>Generate and share student performance reports effortlessly</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!-- About Section -->
+            <section id="about" class="main-section">
+                <div class="about-section">
+                    <div class="about-content">
+                        <h2>About Us</h2>
+                        <p>The CBC Performance Tracking System was developed to support Kenya's Competency-Based Curriculum (CBC) by providing an efficient tool for teachers, schools, and administrators. Our mission is to streamline student performance management, making it easier to track progress, generate reports, and foster collaboration between educators and stakeholders.</p>
+                        <p>This system was created as part of a student project to address real-world educational needs in Kenya, leveraging simple technologies like HTML, CSS, JavaScript, and PHP.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Contacts Section -->
+            <section id="contacts" class="main-section">
+                <div class="contacts-section">
+                    <div class="contacts-content">
+                        <h2>Contacts</h2>
+                        <ul>
+                            <li><strong>Email:</strong> djude457@gmail.com</li>
+                            <li><strong>Phone:</strong> +254 724 103 347</li>
+                            <li><strong>Address:</strong> P.O. Box 12345-00100, Nairobi, Kenya</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- FAQ Section -->
+            <section id="faqs" class="main-section">
+                <div class="faq-section">
+                    <div class="faq-content">
+                        <h2>Frequently Asked Questions (FAQs)</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h3>What is the CBC Performance Tracking System?</h3>
+                                <p>It's a web-based tool designed to help teachers track and manage student performance under Kenya's CBC framework.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Who can use this system?</h3>
+                                <p>Teachers, head teachers, and county administrators can use it to monitor student progress and generate reports.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>How do I get started?</h3>
+                                <p>Click the "Login" button above, or register if you don't have an account yet.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h3>Is my data secure?</h3>
+                                <p>Yes, we use secure authentication and database practices to protect your information.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        // Slide/Fade Section Navigation
+        const navLinks = document.querySelectorAll('.nav-item');
+        const mainCard = document.getElementById('mainContentCard');
+        const sections = document.querySelectorAll('.main-section');
+        let currentSection = 'home';
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.getAttribute('data-section');
+                if (target === currentSection) return;
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                // Remove all slide classes
+                mainCard.className = 'main-content-card';
+                // Add slide class for target
+                mainCard.classList.add('slide-' + target);
+                // Show only the target section
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+                currentSection = target;
+            });
+        });
+    </script>
 </body>
 </html>
