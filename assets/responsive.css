@@ -1,0 +1,65 @@
+/* Essential Responsive Styles */
+/* Mobile-first approach */
+
+/* Base responsive rules */
+* {
+    box-sizing: border-box;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive tables */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive navigation for mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    /* Adjust table display for mobile */
+    .table-responsive {
+        margin-bottom: 15px;
+    }
+}
+
+/* Tablet and small laptop adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+} 

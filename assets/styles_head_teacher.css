@@ -1,0 +1,548 @@
+/* CSS Reset and Base Styles - Removes default browser styling for consistent appearance */
+* {
+    /* Remove default margins from all elements */
+    margin: 0;
+    /* Remove default padding from all elements */
+    padding: 0;
+    /* Include padding and border in element's total width and height */
+    box-sizing: border-box;
+    /* Use Arial font family with fallback to sans-serif for consistent typography */
+    font-family: Arial, sans-serif; /* Replaced Poppins with Arial to avoid external font */
+}
+
+/* Base body styles - Sets the foundation for the entire page */
+body {
+    /* Light gray background for better contrast and modern look */
+    background-color: #f4f4f4;
+    /* Dark gray text color for readability */
+    color: #333;
+}
+
+/* Dashboard Layout Container - Main wrapper for the entire dashboard interface */
+.dashboard-container {
+    /* Flexbox layout for horizontal sidebar and main content arrangement */
+    display: flex;
+    /* Minimum height to fill the entire viewport */
+    min-height: 100vh;
+}
+
+/* Sidebar Navigation - Fixed navigation panel on the left side */
+.sidebar {
+    /* Fixed width for consistent sidebar size */
+    width: 200px;
+    /* Dark background for contrast with main content */
+    background-color: #333;
+    /* White text for readability on dark background */
+    color: #fff;
+    /* Fixed positioning - sidebar stays in place when scrolling */
+    position: fixed;
+    /* Full height to match viewport */
+    height: 100%;
+}
+
+/* Sidebar Header - Top section of sidebar with title */
+.sidebar-header {
+    /* Internal spacing for header content */
+    padding: 15px;
+    /* Blue background to distinguish header from navigation items */
+    background-color: #007BFF; /* Blue theme */
+    /* Center align header text */
+    text-align: center;
+}
+
+/* Navigation Item - Individual menu items in the sidebar */
+.nav-item {
+    /* Flexbox layout for icon and text alignment */
+    display: flex;
+    /* Center items vertically within each nav item */
+    align-items: center;
+    /* Internal spacing for clickable area */
+    padding: 12px 15px;
+    /* Light gray text color for secondary navigation items */
+    color: #ccc;
+    /* Remove default underline from links */
+    text-decoration: none;
+}
+
+/* Navigation Item Hover State - Visual feedback when hovering over menu items */
+.nav-item:hover {
+    /* Darker background on hover for visual feedback */
+    background-color: #444;
+    /* White text on hover for better contrast */
+    color: #fff;
+}
+
+/* Navigation Icon - Icons displayed next to navigation text */
+.nav-icon {
+    /* Space between icon and navigation text */
+    margin-right: 10px;
+}
+
+/* Main Content Area - Primary content area to the right of sidebar */
+.main-content {
+    /* Flex grow to take remaining space after sidebar */
+    flex: 1;
+    /* Left margin to offset content from fixed sidebar */
+    margin-left: 200px;
+}
+
+/* Top Header Bar - Header section above main content */
+.top-header {
+    /* White background for header */
+    background-color: #fff;
+    /* Internal spacing for header content */
+    padding: 15px 20px;
+    /* Flexbox layout for horizontal alignment of header elements */
+    display: flex;
+    /* Space elements evenly across header width */
+    justify-content: space-between;
+    /* Center elements vertically within header */
+    align-items: center;
+    /* Subtle shadow to separate header from content below */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Box - Container for main content sections */
+.content-box {
+    /* Maximum width to prevent content from becoming too wide */
+    max-width: 800px;
+    /* Center content box horizontally with auto margins */
+    margin: 20px auto;
+    /* White background for content area */
+    background: white;
+    /* Internal spacing for content */
+    padding: 20px;
+    /* Rounded corners for modern appearance */
+    border-radius: 8px;
+    /* Subtle shadow for depth and visual separation */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headings - Main titles for content sections */
+h2 {
+    /* Consistent font size for all section headings */
+    font-size: 20px;
+    /* Semi-bold weight for emphasis and hierarchy */
+    font-weight: 600;
+    /* Dark gray color for readability */
+    color: #333;
+    /* Center align headings for visual balance */
+    text-align: center;
+    /* Space below headings for content separation */
+    margin-bottom: 15px;
+}
+
+/* Submit Button - Primary action button styling */
+.submit-btn {
+    /* Blue background for primary actions */
+    background-color: #007BFF;
+    /* White text for contrast */
+    color: white;
+    /* Remove default button border */
+    border: none;
+    /* Comfortable padding for clickable area */
+    padding: 10px 20px;
+    /* Rounded corners for modern appearance */
+    border-radius: 5px;
+    /* Pointer cursor to indicate clickable element */
+    cursor: pointer;
+    /* Readable font size */
+    font-size: 16px;
+    /* Full width button for consistent layout */
+    width: 100%;
+}
+
+/* Submit Button Hover State - Visual feedback when hovering */
+.submit-btn:hover {
+    /* Darker blue background on hover for visual feedback */
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Back Button - Secondary navigation button styling */
+.back-btn {
+    /* Inline-block display for proper button sizing */
+    display: inline-block;
+    /* Blue background to match primary theme */
+    background-color: #007BFF;
+    /* White text for contrast */
+    color: white;
+    /* Comfortable padding for clickable area */
+    padding: 10px 20px;
+    /* Rounded corners for modern appearance */
+    border-radius: 5px;
+    /* Remove default underline from links */
+    text-decoration: none;
+    /* Readable font size */
+    font-size: 16px;
+    /* Space above button for visual separation */
+    margin-top: 20px;
+}
+
+/* Back Button Hover State - Visual feedback when hovering */
+.back-btn:hover {
+    /* Darker blue background on hover for visual feedback */
+    background-color: #0056b3;
+}
+
+/* Action Button Base Styles - Common styling for action buttons */
+.action-btn {
+    /* Inline-block display for proper button sizing */
+    display: inline-block;
+    /* Comfortable padding for clickable area */
+    padding: 8px 15px;
+    /* Rounded corners for modern appearance */
+    border-radius: 5px;
+    /* Remove default underline from links */
+    text-decoration: none;
+    /* Smaller font size for secondary actions */
+    font-size: 14px;
+    /* Space between multiple action buttons */
+    margin-right: 5px;
+}
+
+/* View Button Specific Styling - For viewing/displaying information */
+.view-btn {
+    /* Blue background for view actions */
+    background-color: #007BFF;
+    /* White text for contrast */
+    color: white;
+}
+
+/* View Button Hover State - Visual feedback when hovering */
+.view-btn:hover {
+    /* Darker blue background on hover for visual feedback */
+    background-color: #0056b3;
+}
+
+/* Edit Button Specific Styling - For editing/modifying information */
+.edit-btn {
+    /* Blue background for edit actions */
+    background-color: #007BFF;
+    /* White text for contrast */
+    color: white;
+}
+
+/* Edit Button Hover State - Visual feedback when hovering */
+.edit-btn:hover {
+    /* Darker blue background on hover for visual feedback */
+    background-color: #0056b3;
+}
+
+/* Form Group Container - Wrapper for form input groups */
+.form-group {
+    /* Space between form groups for visual separation */
+    margin-bottom: 15px;
+}
+
+/* Form Labels - Text labels for form inputs */
+.form-group label {
+    /* Block display to stack labels above inputs */
+    display: block;
+    /* Bold font weight for emphasis and hierarchy */
+    font-weight: bold;
+    /* Space between label and input field */
+    margin-bottom: 5px;
+}
+
+/* Form Input Fields - Styling for text inputs, selects, and textareas */
+.form-group input, .form-group select {
+    /* Full width to fill container */
+    width: 100%;
+    /* Internal spacing for comfortable text entry */
+    padding: 8px;
+    /* Light gray border for visual definition */
+    border: 1px solid #ccc;
+    /* Rounded corners for modern appearance */
+    border-radius: 5px;
+    /* Readable font size */
+    font-size: 14px;
+}
+
+/* Data Table - Styling for tabular data display */
+table {
+    /* Full width to fill container */
+    width: 100%;
+    /* Remove default cell spacing and combine borders */
+    border-collapse: collapse;
+    /* Space below table for content separation */
+    margin-bottom: 20px;
+}
+
+/* Table Cell Styling - Applies to both header and data cells */
+th, td {
+    /* Light gray border for cell definition */
+    border: 1px solid #ddd;
+    /* Internal spacing for cell content */
+    padding: 10px;
+    /* Left align text for readability */
+    text-align: left;
+}
+
+/* Table Header Cell Styling - Distinct styling for header cells */
+th {
+    /* Blue background to distinguish headers from data */
+    background-color: #007BFF;
+    /* White text for contrast */
+    color: #fff;
+}
+
+.user-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.user-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 150px;
+}
+
+.dropdown-item {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #f4f4f4;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+    }
+    .main-content {
+        margin-left: 150px;
+    }
+}
+
+/* Dashboard Cards Container */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Individual Dashboard Card */
+.dashboard-card {
+    width: 150px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.05);
+}
+
+.dashboard-card a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* Card Image */
+.card-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+/* Card Title */
+.dashboard-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    color: #007BFF;
+}
+
+.profile-details {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+/* Transfer Form Styles */
+.transfer-form {
+    margin-bottom: 20px;
+}
+
+.transfer-form .form-group select {
+    width: 100%;
+    max-width: 300px; /* Limits width for better layout */
+}
+canvas#performanceChart, canvas#subjectPerformanceChart {
+    width: 100% !important;
+    height: 500px !important; /* Fixed height for a bigger chart */
+}
+.user-menu {
+    position: relative;
+}
+.user-menu-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+.user-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.user-menu-dropdown.hidden {
+    display: none;
+}
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+}
+.dropdown-item:hover {
+    background: #f0f0f0;
+}
+
+/* Performance Reports Styles */
+.filters-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filter-form .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.filter-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #0056b3;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin: 20px 0;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.performance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.performance-table th {
+    background: #007BFF;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.performance-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.performance-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.performance-table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}

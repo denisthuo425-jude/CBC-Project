@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive viewport -->
+    <!-- charset="UTF-8" - Ensures proper character encoding for special characters -->
+    <meta charset="UTF-8">
+    <!-- viewport meta tag - Makes the page responsive for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title displayed in browser tab -->
+    <title>Performance Entry</title>
+    <!-- Link to external CSS file for styling the form and page layout -->
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Main container for performance entry form -->
+    <!-- class="container" - CSS class for consistent page layout and styling -->
+    <div class="container">
+        <!-- Main heading for the performance entry page -->
+        <h2>Performance Entry</h2>
+        <!-- Success message container - Initially hidden, shown via JavaScript when form is successfully submitted -->
+        <!-- id="success-msg" - Unique identifier for JavaScript to target this element -->
+        <!-- class="success" - CSS class for styling success messages (green color, etc.) -->
+        <div id="success-msg" class="success">Performance Recorded Successfully!</div>
+        
+        <!-- Performance entry form with validation -->
+        <!-- action="record_performance.php" - Specifies where form data will be sent when submitted -->
+        <!-- method="POST" - Sends form data in request body (not visible in URL) -->
+        <!-- onsubmit="return validatePerformanceForm()" - Calls JavaScript validation function before form submission -->
+        <form action="record_performance.php" method="POST" onsubmit="return validatePerformanceForm()">
+            <!-- Student details section with grid layout -->
+            <!-- style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;" - CSS Grid layout for responsive form fields -->
+            <!-- grid-template-columns: repeat(2, 1fr) - Creates 2 equal-width columns -->
+            <!-- gap: 10px - Adds 10px spacing between grid items -->
+            <div class="student-details" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                <!-- Student ID input field -->
+                <!-- class="form-group" - CSS class for consistent form field styling -->
+                <div class="form-group">
+                    <!-- for="student_id" - Links label to input field for accessibility -->
+                    <label for="student_id">Student ID</label>
+                    <!-- type="text" - Creates a text input field -->
+                    <!-- id="student_id" - Unique identifier for JavaScript and CSS targeting -->
+                    <!-- name="student_id" - Field name sent to server when form is submitted -->
+                    <input type="text" id="student_id" name="student_id">
+                </div>
+                <!-- Academic year input field -->
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <!-- type="text" - Allows any text input (could be changed to type="number" for numeric only) -->
+                    <input type="text" id="year" name="year">
+                </div>
+                <!-- Term selection dropdown -->
+                <div class="form-group">
+                    <label for="term">Term</label>
+                    <!-- select element - Creates a dropdown menu -->
+                    <select id="term" name="term">
+                        <!-- Default option with empty value -->
+                        <option value="">Select Term</option>
+                        <!-- option elements - Individual dropdown choices -->
+                        <!-- value="Term 1" - Value sent to server when this option is selected -->
+                        <option value="Term 1">Term 1</option>
+                        <option value="Term 2">Term 2</option>
+                        <option value="Term 3">Term 3</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Subjects performance table -->
+            <!-- table element - Creates a structured table for displaying subject performance data -->
+            <table>
+                <!-- thead - Table header section containing column titles -->
+                <thead>
+                    <!-- tr - Table row containing header cells -->
+                    <tr>
+                        <!-- th - Table header cells defining column titles -->
+                        <th>Subject</th>
+                        <th>Scores</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <!-- tbody - Table body section containing the main data rows -->
+                <tbody>
+                    <?php 
+                    // Include subjects array for dynamic subject generation
+                    // require_once 'subjects.php' - Loads the subjects configuration file (only once)
+                    require_once 'subjects.php';
+                    // Loop through subjects array to create form fields dynamically
+                    // foreach ($subjects as $key => $subject) - Iterates through each subject in the array
+                    // $key - The array key (e.g., 'mathematics', 'english')
+                    // $subject - The subject data array containing 'name' and other properties
+                    foreach ($subjects as $key => $subject) {
+                        // Start a new table row for each subject
+                        echo "<tr>";
+                        // Display subject name in first column
+                        // {$subject['name']} - Outputs the subject name (e.g., "Mathematics")
+                        echo "<td>{$subject['name']}</td>";
+                        // Input field for subject score in second column
+                        // name='{$key}_score' - Creates unique field name (e.g., "mathematics_score")
+                        echo "<td><input type='text' name='{$key}_score'></td>";
+                        // Input field for subject comment in third column
+                        // name='{$key}_comment' - Creates unique field name (e.g., "mathematics_comment")
+                        echo "<td><input type='text' name='{$key}_comment'></td>";
+                        // End the table row
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            
+            <!-- General comment section for overall performance feedback -->
+            <div class="form-group">
+                <!-- for="general_comment" - Links label to textarea for accessibility -->
+                <label for="general_comment">General Comment</label>
+                <!-- textarea - Creates a multi-line text input field -->
+                <!-- id="general_comment" - Unique identifier for JavaScript and CSS targeting -->
+                <!-- name="general_comment" - Field name sent to server when form is submitted -->
+                <!-- rows="4" - Sets the height of the textarea to 4 rows -->
+                <textarea id="general_comment" name="general_comment" rows="4"></textarea>
+            </div>
+            
+            <!-- Submit button to record performance data -->
+            <!-- type="submit" - Triggers form submission when clicked -->
+            <!-- class="submit-btn" - CSS class for styling the submit button -->
+            <button type="submit" class="submit-btn">Record Performance</button>
+        </form>
+    </div>
+    
+    <!-- JavaScript for form validation and success message handling -->
+    <!-- script tag - Contains JavaScript code for client-side functionality -->
+    <script>
+        /**
+         * Function: validatePerformanceForm()
+         * Purpose: Validates the performance entry form before submission
+         * @returns {boolean} - Returns false if validation fails, true if passes
+         * Called by: onsubmit="return validatePerformanceForm()" in the form tag
+         */
+        function validatePerformanceForm() {
+            // Get form input values and remove leading/trailing whitespace
+            // Variable: studentId - String, student identifier from form input
+            // document.getElementById('student_id') - Gets the input element by its ID
+            // .value - Gets the current value of the input field
+            // trim() - Removes whitespace from beginning and end of string
+            let studentId = document.getElementById('student_id').value.trim();
+            
+            // Variable: year - String, academic year from form input
+            let year = document.getElementById('year').value.trim();
+            
+            // Variable: term - String, selected academic term from dropdown
+            // .value for select elements returns the value of the selected option
+            let term = document.getElementById('term').value;
+
+            /**
+             * Validation Step 1: Check Required Fields
+             * Purpose: Ensures all mandatory fields are filled out
+             * Logic: Uses logical OR (||) - if ANY field is empty, validation fails
+             * === '' - Strict equality comparison with empty string
+             */
+            if (studentId === '' || year === '' || term === '') {
+                // Show error message to user
+                // alert() - Built-in browser function that displays a popup message
+                alert('Student ID, Year, and Term must be filled out.');
+                // Return false to prevent form submission
+                // When onsubmit returns false, the form submission is cancelled
+                return false;
+            }
+            // Variable: yearNum - Integer, converted year value for validation
+            // parseInt() - Converts string to integer, returns NaN if conversion fails
+            let yearNum = parseInt(year);
+            
+            // Check if year is not a number OR outside valid range
+            // isNaN() - Returns true if value is "Not a Number"
+            // Logical OR (||) - If any condition is true, the entire expression is true
+            if (isNaN(yearNum) || yearNum < 2015 || yearNum > 2025) {
+                // Show specific error message about year requirements
+                alert('Year must be a number between 2015 and 2025.');
+                // Return false to prevent form submission
+                return false;
+            }
+
+            // If all validation passes, allow form submission
+            // Return true to allow the form to submit to record_performance.php
+            return true;
+        }
+
+        /**
+         * Function: window.onload
+         * Purpose: Displays success message if performance was recorded successfully
+         * Triggered: When page loads (after redirect from record_performance.php)
+         * Logic: Checks URL parameters for success status and shows/hides message
+         * window.onload - Event that fires when the entire page has finished loading
+         */
+        window.onload = function() {
+            /**
+             * URL Parameter Parsing
+             * Purpose: Extract status parameter from URL to check if operation was successful
+             * Example URL: performance_entry.html?status=success
+             * This happens when record_performance.php redirects back with success status
+             */
+            // Variable: urlParams - URLSearchParams object, parses URL query string
+            // URLSearchParams - Built-in browser API for working with URL parameters
+            // window.location.search - Gets the query string part of the URL (everything after ?)
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check if status parameter exists and equals 'success'
+            // get() - Returns the value of the specified parameter, or null if not found
+            // === 'success' - Strict equality comparison with string 'success'
+            if (urlParams.get('status') === 'success') {
+                // Get the success message element and make it visible
+                // getElementById() - Returns the element with specified ID
+                // style.display = 'block' - Makes element visible (overrides CSS 'none')
+                // This shows the success message that was initially hidden
+                document.getElementById('success-msg').style.display = 'block';
+                /**
+                 * Auto-hide Success Message
+                 * Purpose: Automatically hide success message after 3 seconds
+                 * setTimeout() - Executes function after specified delay (3000ms = 3 seconds)
+                 * () => { } - Arrow function syntax (ES6) for anonymous function
+                 */
+                setTimeout(() => { 
+                    // Hide the success message by setting display to 'none'
+                    // This removes the success message from view after 3 seconds
+                    document.getElementById('success-msg').style.display = 'none'; 
+                }, 3000);
+            }
+        };
+    </script>
+    <!-- End of JavaScript code -->
+</body>
+<!-- End of HTML document -->
+</html>

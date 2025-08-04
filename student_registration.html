@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script>
+        /**
+         * Function: validateDate()
+         * Purpose: Validates date input in DD-MM-YYYY format
+         * @param {string} dateString - The date string to validate
+         * @returns {boolean} - Returns true if date is valid, false otherwise
+         */
+        function validateDate(dateString) {
+            /**
+             * Step 1: Check Basic Format
+             * Purpose: Ensure date string follows DD-MM-YYYY pattern
+             * Logic: Split string by '-' and check for exactly 3 parts
+             */
+            // Variable: parts - Array, contains day, month, and year as separate strings
+            // split('-') - Divides string at each '-' character into array elements
+            const parts = dateString.split('-');
+            
+            // Check if we have exactly 3 parts (day, month, year)
+            // Array length must be 3 for valid DD-MM-YYYY format
+            if (parts.length !== 3) {
+                // Return false immediately if format is incorrect
+                return false;
+            }
+
+            /**
+             * Step 2: Extract and Validate Day
+             * Purpose: Ensure day is a valid number between 01-31
+             */
+            // Variable: day - Integer, extracted day value
+            // parseInt() - Converts string to integer
+            const day = parseInt(parts[0]);
+            
+            // Check if day is a valid number and within range 1-31
+            // isNaN() - Returns true if value is "Not a Number"
+            if (isNaN(day) || day < 1 || day > 31) {
+                // Return false if day is invalid
+                return false;
+            }
+
+            /**
+             * Step 3: Extract and Validate Month
+             * Purpose: Ensure month is a valid number between 01-12
+             */
+            // Variable: month - Integer, extracted month value
+            const month = parseInt(parts[1]);
+            
+            // Check if month is a valid number and within range 1-12
+            if (isNaN(month) || month < 1 || month > 12) {
+                // Return false if month is invalid
+                return false;
+            }
+
+            /**
+             * Step 4: Extract and Validate Year
+             * Purpose: Ensure year is reasonable and within acceptable range
+             */
+            // Variable: year - Integer, extracted year value
+            const year = parseInt(parts[2]);
+            
+            // Check if year is valid and within reasonable range (1900-2025)
+            // Prevents unrealistic birth years and future dates
+            if (isNaN(year) || year < 1900 || year > 2025) {
+                // Return false if year is invalid
+                return false;
+            }
+
+            // Variable: date - Date object, created from validated parts
+            // Date constructor: new Date(year, month-1, day) - month is 0-indexed
+            const date = new Date(year, month - 1, day);
+            
+            // Check if the created date matches our input values
+            // date.getDate() - Returns day of month (1-31)
+            // date.getMonth() - Returns month (0-11, so we add 1)
+            // date.getFullYear() - Returns full year
+            if (date.getDate() !== day || 
+                date.getMonth() !== month - 1 || 
+                date.getFullYear() !== year) {
+                // Return false if date is logically impossible
+                return false;
+            }
+
+            // If all validation passes, return true
+            return true;
+        }
+
+        /**
+         * Function: validateForm()
+         * Purpose: Validates the entire student registration form before submission
+         * @returns {boolean} - Returns false if validation fails, true if passes
+         */
+        function validateForm() {
+            /**
+             * Step 1: Get Form Input Values
+             * Purpose: Extract and clean all form field values for validation
+             */
+            // Variable: name - String, student's full name
+            // trim() - Removes leading/trailing whitespace
+            let name = document.getElementById('name').value.trim();
+            
+            // Variable: dateOfBirth - String, student's date of birth
+            let dateOfBirth = document.getElementById('date_of_birth').value.trim();
+            
+            // Variable: gender - String, selected gender from dropdown
+            let gender = document.getElementById('gender').value;
+            
+            // Variable: guardianName - String, guardian's full name
+            let guardianName = document.getElementById('guardian_name').value.trim();
+            
+            // Variable: guardianPhone - String, guardian's phone number
+            let guardianPhone = document.getElementById('guardian_phone').value.trim();
+            
+            // Variable: guardianEmail - String, guardian's email address
+            let guardianEmail = document.getElementById('guardian_email').value.trim();
+
+            /**
+             * Step 2: Check Required Fields
+             * Purpose: Ensure all mandatory fields are filled out
+             * Logic: Uses logical OR (||) - if ANY field is empty, validation fails
+             */
+            if (name === '' || dateOfBirth === '' || gender === '' || 
+                guardianName === '' || guardianPhone === '') {
+                // Show error message to user
+                // alert() - Built-in browser function that displays a popup message
+                alert('Please fill in all required fields.');
+                // Return false to prevent form submission
+                return false;
+            }
+
+            /**
+             * Step 3: Validate Date of Birth Format
+             * Purpose: Ensure date follows DD-MM-YYYY format and is valid
+             */
+            if (!validateDate(dateOfBirth)) {
+                // Show specific error message about date format
+                alert('Please enter a valid date of birth in DD-MM-YYYY format (e.g., 15-03-2010).');
+                // Return false to prevent form submission
+                return false;
+            }
+
+            /**
+             * Step 4: Validate Phone Number Format
+             * Purpose: Ensure phone number contains only digits
+             * Logic: Check each character to ensure it's a digit (0-9)
+             */
+            // Check if phone number contains only digits
+            for (let i = 0; i < guardianPhone.length; i++) {
+                // Get each character in the phone number
+                let char = guardianPhone.charAt(i);
+                // Check if character is not a digit (0-9)
+                if (char < '0' || char > '9') {
+                    // Show error message about phone number format
+                    alert('Phone number must contain only digits (0-9).');
+                    // Return false to prevent form submission
+                    return false;
+                }
+            }
+
+            /**
+             * Step 5: Validate Email Format (if provided)
+             * Purpose: Ensure email follows basic email format if not empty
+             * Note: Only validates if email field is not empty (optional field)
+             * Logic: Check for @ symbol and at least one character before and after
+             */
+            if (guardianEmail !== '') {
+                // Check if email contains @ symbol
+                if (guardianEmail.indexOf('@') === -1) {
+                    // Show error message about missing @ symbol
+                    alert('Email address must contain @ symbol.');
+                    // Return false to prevent form submission
+                    return false;
+                }
+                
+                // Split email by @ symbol to check parts
+                let emailParts = guardianEmail.split('@');
+                
+                // Check if there are exactly 2 parts (before and after @)
+                if (emailParts.length !== 2) {
+                    // Show error message about invalid email format
+                    alert('Email address must have exactly one @ symbol.');
+                    // Return false to prevent form submission
+                    return false;
+                }
+                
+                // Check if part before @ is not empty
+                if (emailParts[0].length === 0) {
+                    // Show error message about missing username part
+                    alert('Email address must have characters before @ symbol.');
+                    // Return false to prevent form submission
+                    return false;
+                }
+                
+                // Check if part after @ is not empty
+                if (emailParts[1].length === 0) {
+                    // Show error message about missing domain part
+                    alert('Email address must have characters after @ symbol.');
+                    // Return false to prevent form submission
+                    return false;
+                }
+                
+                // Check if  part contains at least one dot
+                if (emailParts[1].indexOf('.') === -1) {
+                    // Show error message about missing domain extension
+                    alert('Email address must have a domain extension (e.g., .com, .org).');
+                    // Return false to prevent form submission
+                    return false;
+                }
+            }
+
+            // If all validation passes, allow form submission
+            // Return true to allow the form to submit to register_student.php
+            return true;
+        }
+
+        /**
+         * Function: showSuccessMessage()
+         * Purpose: Displays success message after successful form submission
+         * Triggered: When form is successfully submitted and page reloads
+         * Logic: Checks URL parameters for success status
+         */
+        function showSuccessMessage() {
+            // Variable: urlParams - URLSearchParams object, parses URL query string
+            // URLSearchParams - Built-in browser API for working with URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check if status parameter exists and equals 'success'
+            // get() - Returns the value of the specified parameter, or null if not found
+            if (urlParams.get('status') === 'success') {
+                /**
+                 * Success Message Display
+                 * Purpose: Show user feedback that student was registered successfully
+                 */
+                // Get the success message element and make it visible
+                // getElementById() - Returns the element with specified ID
+                // style.display = 'block' - Makes element visible
+                document.getElementById('success-msg').style.display = 'block';
+                
+                /**
+                 * Auto-hide Success Message
+                 * Purpose: Automatically hide success message after 5 seconds
+                 * setTimeout() - Executes function after specified delay (5000ms = 5 seconds)
+                 */
+                setTimeout(() => { 
+                    // Hide the success message by setting display to 'none'
+                    document.getElementById('success-msg').style.display = 'none'; 
+                }, 5000);
+            }
+        }
+
+        /**
+         * Event Listener: Page Load
+         * Purpose: Initialize form functionality when page loads
+         * Triggered: When page finishes loading (DOMContentLoaded event)
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Call function to check for and display success message
+            showSuccessMessage();
+        });
+    </script>
+</head>
+<body>
+    <div class="content-box">
+        <h2>New Entry Student Registration</h2>
+        <?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+            <p style="color: green;">Student registered Successfully</p>
+        <?php endif; ?>
+        <form id="studentForm" action="register_student.php" method="post" onsubmit="validateStudentForm(event)">
+            <input type="hidden" name="school" id="school" value="<?php echo htmlspecialchars($school_id); ?>">
+            <input type="hidden" name="dob" id="dob_hidden">
+            <div class="form-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth (DD-MM-YYYY):</label>
+                    <input type="text" id="dob" name="dob" placeholder="DD-MM-YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="student_email">Student Email</label>
+                    <input type="email" id="student_email" name="student_email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guardian_name">Guardian Name</label>
+                    <input type="text" id="guardian_name" name="guardian_name">
+                </div>
+                <div class="form-group">
+                    <label for="guardian_email">Guardian Email (Optional)</label>
+                    <input type="text" id="guardian_email" name="guardian_email">
+                </div>
+                <div class="form-group">
+                    <label for="guardian_address">Guardian Address (Optional)</label>
+                    <input type="text" id="guardian_address" name="guardian_address">
+                </div>
+                <div class="form-group">
+                    <label for="guardian_phone">Guardian Phone</label>
+                    <input type="text" id="guardian_phone" name="guardian_phone">
+                </div>
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality">
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

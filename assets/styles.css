@@ -1,0 +1,755 @@
+* {
+    /* Remove default margins from all elements */
+    margin: 0;
+    /* Remove default padding from all elements */
+    padding: 0;
+    /* Include padding and border in element's total width and height */
+    box-sizing: border-box;
+    /* Set system-native font  */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+/* Set base body styles */
+body {
+    /* Light gray background for better contrast */
+    background-color: #f4f4f4;
+    /* Dark gray text for readability */
+    color: #333;
+}
+
+/* Container Styles - Used for main content areas */
+.container, .content-box {
+    /* Limit maximum width for readability */
+    max-width: 800px;
+    /* Center container with auto margins and add spacing */
+    margin: 20px auto;
+    /* White background for content */
+    background: white;
+    /* Internal spacing */
+    padding: 20px;
+    /* Rounded corners */
+    border-radius: 8px;
+    /* Subtle shadow for depth */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h2 {
+    /* Set consistent heading size */
+    font-size: 20px;
+    /* Semi-bold weight for emphasis */
+    font-weight: 600;
+    /* Dark gray color for contrast */
+    color: #333;
+    /* Center align headings */
+    text-align: center;
+    /* Space below headings */
+    margin-bottom: 15px;
+}
+
+/* Form Group Container */
+.form-group {
+    /* Space between form groups */
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+.form-group label {
+    /* Make labels block-level */
+    display: block;
+    /* Bold labels for emphasis */
+    font-weight: bold;
+    /* Space between label and input */
+    margin-bottom: 5px;
+}
+
+/* Form Input Fields */
+.form-group input, .form-group select, .form-group textarea {
+    /* Full width inputs */
+    width: 100%;
+    /* Consistent internal padding */
+    padding: 8px;
+    /* Subtle border */
+    border: 1px solid #ccc;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Readable font size */
+    font-size: 14px;
+}
+
+/* Textarea Specific */
+.form-group textarea {
+    /* Allow vertical resizing only */
+    resize: vertical;
+}
+
+/* Submit Button Styles */
+.submit-btn {
+    /* Primary blue color */
+    background-color: #007BFF;
+    /* White text */
+    color: white;
+    /* Remove default border */
+    border: none;
+    /* Comfortable padding */
+    padding: 10px 20px;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Pointer cursor on hover */
+    cursor: pointer;
+    /* Readable font size */
+    font-size: 16px;
+    /* Full width button */
+    width: 100%;
+}
+
+/* Submit Button Hover State */
+.submit-btn:hover {
+    /* Darker blue on hover */
+    background-color: #0056b3;
+}
+
+/* Back Button Styles */
+.back-btn {
+    /* Make button inline-block */
+    display: inline-block;
+    /* Green background */
+    background-color: #28a745;
+    /* White text */
+    color: white;
+    /* Comfortable padding */
+    padding: 10px 20px;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Remove underline */
+    text-decoration: none;
+    /* Readable font size */
+    font-size: 16px;
+    /* Space above button */
+    margin-top: 20px;
+    /* Center text */
+    text-align: center;
+}
+
+/* Back Button Hover State */
+.back-btn:hover {
+    /* Darker green on hover */
+    background-color: #218838;
+}
+
+/* Action Button Base Styles */
+.action-btn {
+    /* Make buttons inline-block */
+    display: inline-block;
+    /* Comfortable padding */
+    padding: 8px 15px;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Remove underline */
+    text-decoration: none;
+    /* Smaller font size */
+    font-size: 14px;
+    /* Space between buttons */
+    margin-right: 5px;
+}
+
+/* View Button Specific */
+.view-btn {
+    /* Green background */
+    background-color: #28a745;
+    /* White text */
+    color: white;
+}
+
+/* View Button Hover */
+.view-btn:hover {
+    /* Darker green on hover */
+    background-color: #218838;
+}
+
+/* Edit Button Specific */
+.edit-btn {
+    /* Blue background */
+    background-color: #007BFF;
+    /* White text */
+    color: white;
+}
+
+/* Edit Button Hover */
+.edit-btn:hover {
+    /* Darker blue on hover */
+    background-color: #0056b3;
+}
+
+/* Cancel Button Specific */
+.cancel-btn {
+    /* Red background */
+    background-color: #dc3545;
+    /* White text */
+    color: white;
+}
+
+/* Cancel Button Hover */
+.cancel-btn:hover {
+    /* Darker red on hover */
+    background-color: #c82333;
+}
+
+/* Table Styles - Core table element
+ * This establishes the foundation for all data tables in the system
+ * Used in: Student lists, performance records, and administrative data views
+ */
+table {
+    /* Forces table to span full width of its container
+     * Ensures consistent table sizing across different screen sizes
+     * Prevents tables from being too narrow on larger screens
+     */
+    width: 100%;
+
+    /* Removes default cell spacing and combines cell borders
+     * Creates a cleaner, more modern look
+     * Prevents double borders between cells
+     * Improves table readability
+     */
+    border-collapse: collapse;
+
+    /* Creates vertical spacing between tables and subsequent elements
+     * Ensures proper visual separation when multiple tables are stacked
+     * Standard spacing matches other component margins for consistency
+     */
+    margin-bottom: 20px;
+}
+
+/* Table Cell Styles - Applies to both header (th) and data (td) cells
+ * Creates consistent styling across all table cells
+ * Ensures proper alignment and spacing of cell content
+ */
+th, td {
+    /* Defines cell boundaries with a subtle gray border
+     * Color #ddd provides soft visual separation
+     * 1px maintains a slim, modern appearance
+     * solid style ensures consistent border rendering across browsers
+     */
+    border: 1px solid #ddd;
+
+    /* Internal cell spacing for content readability
+     * 10px provides comfortable space around content
+     * Equal padding on all sides ensures alignment
+     * Maintains consistent spacing across all cells
+     */
+    padding: 10px;
+
+    /* Aligns text to the left edge of cells
+     * Improves readability for most Western languages
+     * Maintains consistent alignment across all cells
+     * Helps with scanning rows of data
+     */
+    text-align: left;
+}
+
+/* Table Header Cell Styles - Specific to header cells
+ * Differentiates header cells from data cells
+ * Improves table hierarchy and scanability
+ */
+th {
+    /* Light gray background distinguishes headers
+     * #f2f2f2 provides subtle contrast without being too harsh
+     * Helps users identify column headers quickly
+     * Maintains readability of dark text
+     */
+    background-color: #f2f2f2;
+
+    /* Makes header text bold for emphasis
+     * Improves visual hierarchy
+     * Helps distinguish headers from regular cells
+     * Enhances table scanability
+     */
+    font-weight: bold;
+}
+
+/* Success Message Styles */
+.success {
+    /* Green text color */
+    color: green;
+    /* Center align text */
+    text-align: center;
+    /* Space below message */
+    margin-bottom: 15px;
+    /* Hidden by default */
+    display: none;
+}
+
+/* Dashboard Layout Container */
+.dashboard-container {
+    /* Flex layout */
+    display: flex;
+    /* Full viewport height */
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    /* Fixed width */
+    width: 200px;
+    /* Dark background */
+    background-color: #333;
+    /* White text */
+    color: #fff;
+    /* Fixed position */
+    position: fixed;
+    /* Full height */
+    height: 100%;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    /* Internal padding */
+    padding: 15px;
+    /* Green background */
+    background-color: #28a745;
+}
+
+/* Navigation Items */
+.nav-item {
+    /* Flex layout */
+    display: flex;
+    /* Center items vertically */
+    align-items: center;
+    /* Comfortable padding */
+    padding: 12px 15px;
+    /* Light gray text */
+    color: #ccc;
+    /* Remove underline */
+    text-decoration: none;
+}
+
+/* Navigation Item Hover */
+.nav-item:hover {
+    /* Darker background on hover */
+    background-color: #444;
+    /* White text on hover */
+    color: #fff;
+}
+
+/* Navigation Icons */
+.nav-icon {
+    /* Space between icon and text */
+    margin-right: 10px;
+}
+
+/* Main Content Area */
+.main-content {
+    /* Grow to fill space */
+    flex: 1;
+    /* Offset for sidebar */
+    margin-left: 200px;
+}
+
+/* Top Header Bar */
+.top-header {
+    /* White background */
+    background-color: #fff;
+    /* Comfortable padding */
+    padding: 15px 20px;
+    /* Flex layout */
+    display: flex;
+    /* Space between items */
+    justify-content: space-between;
+    /* Center items vertically */
+    align-items: center;
+    /* Subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* User Menu Container */
+.user-menu {
+    /* Enable positioning context */
+    position: relative;
+}
+
+/* User Menu Button */
+.user-menu-btn {
+    /* Flex layout for icon and text */
+    display: flex;
+    /* Center items vertically */
+    align-items: center;
+    /* Space between items */
+    gap: 10px;
+    /* Remove button styling */
+    background: none;
+    border: none;
+    /* Show pointer on hover */
+    cursor: pointer;
+}
+
+/* User Avatar Image */
+.user-avatar {
+    /* Fixed size for consistency */
+    width: 32px;
+    height: 32px;
+    /* Circular shape */
+    border-radius: 50%;
+}
+
+/* Dropdown Menu Container */
+.user-menu-dropdown {
+    /* Absolute positioning */
+    position: absolute;
+    /* Position from right edge */
+    right: 0;
+    /* Space from button */
+    top: 40px;
+    /* White background */
+    background-color: #fff;
+    /* Subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Fixed width */
+    width: 150px;
+}
+
+/* Profile Details Container */
+.profile-details {
+    /* Internal spacing */
+    padding: 15px;
+    /* Light border */
+    border: 1px solid #ddd;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Light gray background */
+    background-color: #f9f9f9;
+}
+
+/* Profile Text Paragraphs */
+.profile-details p {
+    /* Space between paragraphs */
+    margin-bottom: 10px;
+}
+
+/* Profile Bold Text */
+.profile-details strong {
+    /* Semi-bold weight */
+    font-weight: 600;
+}
+
+/* Dropdown Menu Items */
+.dropdown-item {
+    /* Internal spacing */
+    padding: 10px;
+    /* Dark text color */
+    color: #333;
+    /* Remove underline */
+    text-decoration: none;
+    /* Block display */
+    display: block;
+}
+
+/* Dropdown Item Hover */
+.dropdown-item:hover {
+    /* Light gray background on hover */
+    background-color: #f4f4f4;
+}
+
+/* Hidden Element Class */
+.hidden {
+    /* Hide element */
+    display: none;
+}
+
+/* Dashboard Cards Grid */
+.dashboard-cards {
+    /* Grid layout */
+    display: grid;
+    /* Responsive columns */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Space between cards */
+    gap: 15px;
+    /* Space above cards */
+    margin-top: 15px;
+}
+
+/* Individual Dashboard Card */
+.dashboard-card {
+    /* White background */
+    background-color: #fff;
+    /* Internal spacing */
+    padding: 10px;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Subtle shadow */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Center content */
+    text-align: center;
+}
+
+/* Card Images */
+.card-image {
+    /* Fixed size */
+    width: 100px;
+    height: 100px;
+    /* Block display */
+    display: block;
+    /* Center horizontally */
+    margin: 0 auto 10px;
+}
+
+/* Report Card Container */
+.report-card {
+    /* Green border */
+    border: 2px solid #28a745;
+    /* Internal spacing */
+    padding: 20px;
+    /* Rounded corners */
+    border-radius: 8px;
+    /* White background */
+    background-color: #fff;
+    /* Maximum width */
+    max-width: 900px;
+    /* Center horizontally */
+    margin: 20px auto;
+    /* Elevated shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Report Table Headers */
+.report-table th {
+    /* Green background */
+    background-color: #28a745;
+    /* White text */
+    color: #fff;
+    /* Semi-bold text */
+    font-weight: 600;
+}
+
+/* Student Transition Form */
+.transition-form {
+    /* Space above form */
+    margin-top: 20px;
+}
+
+/* Transition Form Table */
+.transition-form table {
+    /* Space below table */
+    margin-bottom: 20px;
+}
+
+/* Transition Form Checkbox Column */
+.transition-form th:first-child, .transition-form td:first-child {
+    /* Fixed width for checkbox column */
+    width: 50px;
+    /* Center align content */
+    text-align: center;
+}
+
+/* Transition Form Submit Button */
+.transition-form .submit-btn {
+    /* Auto width */
+    width: auto;
+    /* Extended padding */
+    padding: 10px 30px;
+    /* Block display */
+    display: block;
+    /* Center horizontally */
+    margin: 0 auto;
+}
+
+/* Responsive Design Rules */
+@media (max-width: 768px) {
+    /* Sidebar Mobile Adjustments */
+    .sidebar {
+        /* Reduced width */
+        width: 150px;
+    }
+    /* Main Content Mobile Adjustments */
+    .main-content {
+        /* Adjusted margin for smaller sidebar */
+        margin-left: 150px;
+    }
+    /* Content Box Mobile Adjustments */
+    .content-box {
+        /* Reduced margins */
+        margin: 10px;
+        /* Reduced padding */
+        padding: 15px;
+    }
+    /* Dashboard Cards Mobile Grid */
+    .dashboard-cards {
+        /* Smaller card minimum width */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+/* Summary Box Container */
+.summary-box {
+    /* Space above box */
+    margin-top: 15px;
+    /* Internal spacing */
+    padding: 10px;
+    /* Light gray background */
+    background-color: #f9f9f9;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Light border */
+    border: 1px solid #ddd;
+}
+
+/* Summary Box Paragraphs */
+.summary-box p {
+    /* Minimal vertical spacing */
+    margin: 5px 0;
+}
+
+/* Comment Space Container */
+.comment-space {
+    /* Inline-block display */
+    display: inline-block;
+    /* Minimum height */
+    min-height: 20px;
+    /* Internal spacing */
+    padding: 5px;
+    /* White background */
+    background-color: #fff;
+    /* Dashed border */
+    border: 1px dashed #ccc;
+    /* Full width */
+    width: 100%;
+    /* Space above container */
+    margin-top: 5px;
+}
+
+/* Download Button */
+.download-btn {
+    /* Blue background */
+    background-color: #007BFF;
+    /* White text */
+    color: white;
+    /* Remove border */
+    border: none;
+    /* Comfortable padding */
+    padding: 10px 20px;
+    /* Rounded corners */
+    border-radius: 5px;
+    /* Pointer cursor */
+    cursor: pointer;
+    /* Space above button */
+    margin-top: 15px;
+}
+
+/* Download Button Hover */
+.download-btn:hover {
+    /* Darker blue on hover */
+    background-color: #0056b3;
+}
+
+/* Registration Form Specific Styles */
+.registration-container {
+    /* Centered layout for registration forms */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.registration-container .container {
+    /* Registration form container styling */
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Message Display Styles */
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+/* Registration Form Labels */
+.registration-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Registration Form Inputs */
+.registration-container .form-group input,
+.registration-container .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Registration Submit Button */
+.registration-container .submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.registration-container .submit-btn:hover {
+    background: #0056b3;
+}
+
+/* Links Styling */
+.links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Password Requirements List */
+.password-requirements {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+/* Error Message Display */
+.error-message {
+    color: #dc3545;
+    margin-bottom: 15px;
+    display: none;
+}

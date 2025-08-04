@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Staff Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 400px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function validateStaffForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let qualification = document.getElementById("qualification").value.trim();
+            let role = document.getElementById("role").value;
+            let school = document.getElementById("school").value;
+            let grade = document.getElementById("grade").value;
+
+            if (name === "" || email === "" || phone === "" || qualification === "" || role === "" || school === "") {
+                alert("All fields except Grade must be filled out.");
+                return false;
+            }
+
+            // Email Validation (Simple check for @ and .)
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            // Phone Validation (Kenyan format - 10 digits)
+            if (phone.length !== 10 || isNaN(phone) || (!phone.startsWith("07") && !phone.startsWith("01"))) {
+                alert("Invalid phone number. Use 07XXXXXXXX or 01XXXXXXXX.");
+                return false;
+            }
+
+            // If role is Teacher, ensure grade is selected
+            if (role === "Teacher" && grade === "") {
+                alert("Grade must be selected for Teachers.");
+                return false;
+            }
+
+            alert("Staff Registered Successfully!");
+            document.getElementById("staffForm").submit();
+        }
+
+        // Function to enable/disable grade dropdown based on role
+        function toggleGradeField() {
+            let role = document.getElementById("role").value;
+            let gradeField = document.getElementById("grade");
+
+            if (role === "Teacher") {
+                gradeField.disabled = false;
+                gradeField.required = true;
+            } else {
+                gradeField.disabled = true;
+                gradeField.required = false;
+                gradeField.value = ""; // Clear the value
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Register New Staff</h2>
+    <form id="staffForm" action="register_staff.php" method="POST" onsubmit="validateStaffForm(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="school">School:</label>
+        <select name="school" id="school" required>
+            <option value="">Select School</option>
+            <option value="11">Green Valley Primary</option>
+            <option value="12">Blue Ridge Secondary</option>
+            <option value="13">Playway Educational Centre</option>
+            <option value="14">Imani Primary School</option>
+            <option value="15">Morning Star Primary</option>
+            <option value="16">Fadhili Junior Primary</option>
+            <option value="17">Tengecha Secondary School</option>
+            <option value="18">Emmanuella Primary</option>
+            <option value="19">Upperhill Academy</option>
+            <option value="20">Mbiruri Secondary School</option>
+        </select>
+
+        <label for="email">Email (Used for Login):</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="phone">Mobile Number:</label>
+        <input type="text" name="phone" id="phone" required>
+
+        <label for="qualification">Qualification:</label>
+        <input type="text" name="qualification" id="qualification" required>
+
+        <label for="role">Role:</label>
+        <select name="role" id="role" onchange="toggleGradeField()" required>
+            <option value="">Select Role</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Head Teacher">Head Teacher</option>
+            <option value="County Admin">County Admin</option>
+        </select>
+
+        <label for="grade">Assigned Grade:</label>
+        <select name="grade" id="grade" disabled>
+            <option value="">Select Grade</option>
+            <option value="4">Grade 4</option>
+            <option value="5">Grade 5</option>
+            <option value="6">Grade 6</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+        </select>
+
+        <button type="submit">Register Staff</button>
+    </form>
+</div>
+
+</body>
+</html>

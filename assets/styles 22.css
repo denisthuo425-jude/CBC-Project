@@ -1,0 +1,422 @@
+/* CSS Reset - Removes default browser styling for consistent appearance */
+* {
+    /* Remove default margins from all elements */
+    margin: 0;
+    /* Remove default padding from all elements */
+    padding: 0;
+    /* Include padding and border in element's total width and height */
+    box-sizing: border-box;
+}
+
+/* Base body styles - Sets the foundation for the entire page */
+body {
+    /* Use Arial font family with fallback to sans-serif */
+    font-family: Arial, sans-serif;
+    /* Light gray background for better contrast and modern look */
+    background-color: #f8f9fa;
+    /* Dark gray text color for readability */
+    color: #333;
+    /* Line height for better text spacing and readability */
+    line-height: 1.6;
+}
+
+/* Main container - Wraps all content for consistent layout */
+.container {
+    /* Full width of parent element */
+    width: 100%;
+    /* Maximum width to prevent content from becoming too wide on large screens */
+    max-width: 1200px;
+    /* Center container horizontally with auto margins */
+    margin: 0 auto;
+    /* White background for content area */
+    background-color: #fff;
+    /* Subtle shadow for depth and visual separation */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header section - Navigation bar at the top of the page */
+.header {
+    /* White background for header */
+    background-color: #fff;
+    /* Subtle shadow to separate header from content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Internal spacing for header content */
+    padding: 15px 20px;
+    /* Sticky positioning - header stays at top when scrolling */
+    position: sticky;
+    /* Position at top of viewport */
+    top: 0;
+    /* High z-index to ensure header appears above other content */
+    z-index: 1000;
+}
+
+/* Navigation container within header */
+.header nav {
+    /* Flexbox layout for horizontal alignment of nav items */
+    display: flex;
+    /* Center items vertically */
+    align-items: center;
+    /* Space items evenly across the width */
+    justify-content: space-between;
+    /* Maximum width to match main container */
+    max-width: 1200px;
+    /* Center navigation horizontally */
+    margin: 0 auto;
+}
+
+/* Navigation links container */
+.nav-links {
+    /* Flexbox layout for horizontal navigation */
+    display: flex;
+    /* Center navigation items */
+    justify-content: center;
+    /* Allow navigation to grow and take available space */
+    flex-grow: 1;
+    /* Space between navigation items */
+    gap: 2rem;
+}
+
+/* Individual navigation item styling */
+.nav-item {
+    /* Remove default underline from links */
+    text-decoration: none;
+    /* Dark gray text color */
+    color: #333;
+    /* Medium font weight for emphasis */
+    font-weight: 500;
+    /* Internal spacing for clickable area */
+    padding: 8px 16px;
+    /* Rounded corners for modern appearance */
+    border-radius: 20px;
+    /* Smooth transition for hover effects */
+    transition: all 0.3s ease;
+}
+
+/* Navigation item hover state */
+.nav-item:hover {
+    /* Light gray background on hover */
+    background-color: #f0f0f0;
+    /* Blue text color on hover */
+    color: #007bff;
+}
+
+/* Active navigation item styling */
+.nav-item.active {
+    /* Blue background for active/current page */
+    background-color: #007bff;
+    /* White text for contrast */
+    color: #fff;
+}
+
+/* Authentication buttons container */
+.auth-buttons {
+    /* Flexbox layout for horizontal button alignment */
+    display: flex;
+    /* Space between signup and login buttons */
+    gap: 1rem;
+    /* Center buttons vertically */
+    align-items: center;
+}
+
+/* Common styles for signup and login buttons */
+.signup-btn, .login-btn {
+    /* Internal spacing for button content */
+    padding: 8px 20px;
+    /* Rounded corners for modern appearance */
+    border-radius: 20px;
+    /* Remove default underline */
+    text-decoration: none;
+    /* Smooth transition for hover effects */
+    transition: all 0.3s ease;
+    /* Medium font weight for emphasis */
+    font-weight: 500;
+}
+
+/* Signup button specific styling */
+.signup-btn {
+    /* Transparent background */
+    background-color: transparent;
+    /* Green text color */
+    color: #28a745;
+    /* Green border for outline button style */
+    border: 2px solid #28a745;
+}
+
+/* Signup button hover state */
+.signup-btn:hover {
+    /* Green background on hover */
+    background-color: #28a745;
+    /* White text on hover for contrast */
+    color: #fff;
+}
+
+/* Login button specific styling */
+.login-btn {
+    /* Green background */
+    background-color: #28a745;
+    /* White text for contrast */
+    color: #fff;
+}
+
+/* Login button hover state */
+.login-btn:hover {
+    /* Darker green background on hover */
+    background-color: #218838;
+}
+
+/* Content wrapper - Main content area below header */
+.content-wrapper {
+    /* Minimum height to fill viewport minus header height */
+    min-height: calc(100vh - 70px);
+}
+
+/* Page transition container - For single-page application behavior */
+.page {
+    /* Hide pages by default */
+    display: none;
+    /* Start with zero opacity for fade-in effect */
+    opacity: 0;
+    /* Smooth transition for opacity changes */
+    transition: opacity 0.5s ease;
+}
+
+/* Active page styling */
+.page.active {
+    /* Show active page */
+    display: block;
+    /* Full opacity for visible content */
+    opacity: 1;
+}
+
+/* Hero section - Main landing area with title and tagline */
+.hero {
+    /* Internal spacing for hero content */
+    padding: 40px 20px;
+    /* Center align text content */
+    text-align: center;
+    /* Gradient background from light gray to white */
+    background: linear-gradient(to bottom, #f8f9fa, #fff);
+}
+
+/* Hero section main heading */
+.hero h1 {
+    /* Large font size for impact */
+    font-size: 2.2rem;
+    /* Blue color for brand consistency */
+    color: #007bff;
+    /* Space below heading */
+    margin-bottom: 1rem;
+}
+
+/* Hero section tagline/subtitle */
+.hero .tagline {
+    /* Medium font size for subtitle */
+    font-size: 1.1rem;
+    /* Gray color for secondary text */
+    color: #666;
+    /* Space below tagline */
+    margin-bottom: 2rem;
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.info-section {
+    text-align: left;
+}
+
+.main-features, .cbc-info {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+}
+
+.main-features h2, .cbc-info h2 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.main-features p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Image Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 8px;
+    margin: 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Features Section */
+.features-section {
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.features-section h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 2rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 40px 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.benefits h2 {
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.about-content,
+.contact-content,
+.faq-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-content ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.contact-content li {
+    margin-bottom: 0.5rem;
+}
+
+.faq-item {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.faq-item h3 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .auth-buttons {
+        margin-left: auto;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero .tagline {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}

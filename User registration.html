@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - CBC Performance Tracking</title>
+    <!-- External CSS file for styling -->
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="registration-container">
+    <!-- Main registration container -->
+    <div class="container">
+        <h2>User Registration</h2>
+        
+        <!-- Error message container -->
+        <div id="errorMessage" class="error-message"></div>
+        
+        <!-- Registration form -->
+        <form id="registrationForm" method="POST" action="register_user.php" onsubmit="return validateForm(event)">
+            <!-- Username field -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <!-- Email field -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <!-- Password field -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <!-- Password requirements list -->
+                <ul class="password-requirements">
+                    <li>At least 8 characters long</li>
+                    <li>Contains numbers and letters</li>
+                </ul>
+            </div>
+            
+            <!-- Confirm password field -->
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            
+            <!-- Role selection -->
+            <div class="form-group">
+                <label for="role">Select Role:</label>
+                <select id="role" name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                    <option value="Head Teacher">Head Teacher</option>
+                    <option value="County Admin">County Admin</option>
+                </select>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+        
+        <!-- Login link -->
+        <div class="links">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- JavaScript for form validation -->
+    <script>
+        /**
+         * Validates the registration form before submission
+         * @param {Event} event - The form submission event
+         * @returns {boolean} - Returns false if validation fails, true if passes
+         */
+        function validateForm(event) {
+            // Get form elements
+            const form = event.target;
+            const password = form.password.value;
+            const confirmPassword = form.confirm_password.value;
+            const errorDiv = document.getElementById('errorMessage');
+            
+            // Hide any existing error message
+            errorDiv.style.display = 'none';
+            
+            // Simple password validation
+            if (password.length < 8) {
+                showError('Password must be at least 8 characters long');
+                return false;
+            }
+            
+            // Check if password contains both letters and numbers
+            let hasLetter = false;
+            let hasNumber = false;
+            
+            // Check each character in the password
+            for (let i = 0; i < password.length; i++) {
+                let char = password.charAt(i);
+                
+                // Check if character is a letter (a-z or A-Z)
+                if ((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')) {
+                    hasLetter = true;
+                }
+                
+                // Check if character is a number (0-9)
+                if (char >= '0' && char <= '9') {
+                    hasNumber = true;
+                }
+            }
+            
+            // Check if password has both letters and numbers
+            if (!hasLetter || !hasNumber) {
+                showError('Password must contain both letters and numbers');
+                return false;
+            }
+            
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                showError('Passwords do not match');
+                return false;
+            }
+            
+            // If all validation passes, allow the form to submit
+            return true;
+        }
+        
+        /**
+         * Displays an error message
+         * @param {string} message - The error message to display
+         */
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
